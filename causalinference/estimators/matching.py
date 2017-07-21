@@ -20,8 +20,8 @@ class Matching(Estimator):
 		Y_c, Y_t = data['Y_c'], data['Y_t']
 		X_c, X_t = data['X_c'], data['X_t']
 
-		matches_c = [match(X_i, X_t, W, m) for X_i in X_c]
-		matches_t = [match(X_i, X_c, W, m) for X_i in X_t]
+		self.matches_c = [match(X_i, X_t, W, m) for X_i in X_c]
+		self.matches_t = [match(X_i, X_c, W, m) for X_i in X_t]
 		Yhat_c = np.array([Y_t[idx].mean() for idx in matches_c])
 		Yhat_t = np.array([Y_c[idx].mean() for idx in matches_t])
 		ITT_c = Yhat_c - Y_c
